@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Compromissos</string>
+    <string name="btCadEvent_home">Novo Evento</string>
+    <string name="btVoltar_cadEvent">Voltar</string>
+    <string name="tv_cadEvent">Data:</string>
+    <string name="tvHora_cadEvent">Hora:</string>
+    <string name="tvTermino_cadEvent">Termino:</string>
+    <string name="tvLocal_cadEvent">Local:</string>
+    <string name="tvDescricao_cadEvent">Descrição:</string>
+    <string name="tvParticipantes_cadEvent">Participantes:</string>
+    <string name="tvTipoEvent_cadEvent">Tipo de Evento:</string>
+    <string name="btAdc_cadEvent">Adicionar</string>
+    <string name="etRepetir_cadEvent">Repetir:</string>
+    <string name="rbSim_CadEvent">Sim</string>
+    <string name="rbNao_cadEvent">Não</string>
+    <string name="btAtualizar_AtuaEvent">Atualizar</string>
+    <string name="btExcluirEvent">Excluir</string>
+    <string name="tvBuscarEvent_home">Procurar :</string>
+    <string name="btBuscarEvent_home">Buscar</string>
+    <string name="tvData_itemEventos">Data</string>
+    <string name="tvLocal_itemEventos">Local</string>
+    <string name="tvExibeData_itemEventos">Data:</string>
+    <string name="tvExibeLocal_itemEventos">Local:</string>
+    <string name="tvExibeDescricao_itemEventos">Descrição:</string>
+    <string name="tvRepetircao_repetir">Repetição:</string>
+    <string name="tvRepetCada_repetir">Repete a cada:</string>
+    <string name="btEditar_detalheEvent">Editar</string>
+
+    <string-array name="tipoEvento">
+        <item>  </item>
+        <item>Saúde</item>
+        <item>Família</item>
+        <item>Escola</item>
+        <item>Trabalho</item>
+        <item>Lazer</item>
+    </string-array>
+
+    <string-array name="repeticao">
+        <item>  </item>
+        <item>Diariamente</item>
+        <item>Semanalmente</item>
+        <item>Anualmente</item>
+    </string-array>
+
+    <string-array name="tempoRepeticao">
+        <item>  </item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+</resources>
