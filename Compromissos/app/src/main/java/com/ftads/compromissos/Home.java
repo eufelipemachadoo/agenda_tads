@@ -89,7 +89,7 @@ public class Home extends AppCompatActivity implements AdapterView.OnItemClickLi
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Evento evento = adpEventos.getItem(position);
 
-        Intent iCadEvent = new Intent(getBaseContext(), com.ftads.compromissos.detalhesEvento.class);
+        Intent iCadEvent = new Intent(getBaseContext(), detalhesEvento.class);
         iCadEvent.putExtra("EVENTOS", evento);
 
         startActivity(iCadEvent);

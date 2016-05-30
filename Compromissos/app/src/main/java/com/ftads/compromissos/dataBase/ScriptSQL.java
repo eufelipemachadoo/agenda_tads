@@ -16,8 +16,14 @@ public class ScriptSQL {
             sqlBuilder.append(" LOCAL VARCHAR(50), " );
             sqlBuilder.append(" DESCRICAO VARCHAR(100), ");
             sqlBuilder.append(" PARTICIPANTES VARCHAR(200), ");
-            sqlBuilder.append(" TIPOEVENT VARCHAR(20), ");
-            sqlBuilder.append(" REPETIR VARCHAR(3) ");
+            sqlBuilder.append(" TIPOEVENTO VARCHAR(20), ");
+            sqlBuilder.append(" REPETIR VARCHAR(3), ");
+            sqlBuilder.append(" REPETICAO VARCHAR(15), ");
+            sqlBuilder.append(" REPETICADA VARCHAR(3), ");
+            sqlBuilder.append(" INICIO VARCHAR(10), ");
+            sqlBuilder.append(" SEMPRE VARCHAR(3), ");
+            sqlBuilder.append(" OCORRENCIAS VARCHAR(10), ");
+            sqlBuilder.append(" TERMINAEM VARCHAR(10) ");
             sqlBuilder.append(" ); ");
 
 

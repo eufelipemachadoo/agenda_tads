@@ -32,9 +32,13 @@ public class repositorioEventos {
         values.put("DESCRICAO", evento.getDescricao());
         values.put("PARTICIPANTES", evento.getPariticipantes());
         values.put("TIPOEVENT", evento.getTipoEvento());
-        values.put("REPETIR", evento.getRepetir());
-
-
+        //values.put("REPETIR", evento.getRepetir());
+        //values.put("REPETICAO", evento.getTipoRepeticao());
+        //values.put("REPETICADA", evento.getRepetCada());
+        //values.put("INICIO", evento.getInicio());
+        //values.put("SEMPRE", evento.getSempre());
+       // values.put("OCORRENCIAS", evento.getOcorrencias());
+        //values.put("TERMINAEM", evento.getTerminaEm());
         return values;
     }
 
@@ -49,7 +53,7 @@ public class repositorioEventos {
     {
 
         ContentValues values = preencheCampos(evento);
-        conn.update("EVENTOS", values, "_id = ?", new String[]{String.valueOf( evento.getId() )});
+        conn.update("EVENTOS",values, "_id = ?", new String[]{String.valueOf(evento.getId())} );
     }
 
 
@@ -84,7 +88,11 @@ public class repositorioEventos {
                 evento.setPariticipantes(cursor.getString(6));
                 evento.setTipoEvento(cursor.getString(7));
                 evento.setRepetir(cursor.getString(8));
+//                evento.setTipoRepeticao(cursor.getString(9));
 
+
+
+//
                 adpEventos.add(evento);
             }
             while (cursor.moveToNext());

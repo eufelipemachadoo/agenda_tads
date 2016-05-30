@@ -16,6 +16,12 @@ public class Evento implements Serializable {
     private String pariticipantes;
     private String tipoEvento;
     private String repetir;
+    private String tipoRepeticao;
+    private String repetCada;;
+    private String inicio;
+    private String sempre;
+    private String ocorrencias;
+    private String terminaEm;
 
 
     public Evento()
@@ -27,7 +33,7 @@ public class Evento implements Serializable {
 
 
 
-//METODOS GETS E SETS
+//METODOS GET SET
 
     //ID
     public long getId() {
@@ -132,7 +138,58 @@ public class Evento implements Serializable {
     }
     //FIM REPETIR
 
+    public String getTipoRepeticao() {
+        return tipoRepeticao;
+    }
+
+    public void setTipoRepeticao(String tipoRepeticao) {
+        this.tipoRepeticao = tipoRepeticao;
+    }
+
+    public String getRepetCada() {
+        return repetCada;
+    }
+
+    public void setRepetCada(String repetCada) {
+        this.repetCada = repetCada;
+    }
+
+    public String getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(String inicio) {
+        this.inicio = inicio;
+    }
+
+    public String getSempre() {
+        return sempre;
+    }
+
+    public void setSempre(String sempre) {
+        this.sempre = sempre;
+    }
+
+    public String getOcorrencias() {
+        return ocorrencias;
+    }
+
+    public void setOcorrencias(String ocorrencias) {
+        this.ocorrencias = ocorrencias;
+    }
+
+    public String getTerminaEm() {
+        return terminaEm;
+    }
+
+    public void setTerminaEm(String terminaEm) {
+        this.terminaEm = terminaEm;
+    }
+
+
     //FIM METODOS GETS SETS
+
+
 
 
 

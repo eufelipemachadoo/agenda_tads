@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/tv_cadEvent"
-                android:id="@+id/tvData_cadEvent"
+                android:id="@+id/tvData_cadEventRepet"
                 android:gravity="right"
                 android:textColor="#000000" />
 
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="date"
                 android:ems="10"
-                android:id="@+id/etData_cadEvent"
+                android:id="@+id/etData_cadEventRepet"
                 android:background="#ffffff"
                 />
         </LinearLayout>
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/tvHora_cadEvent"
-                android:id="@+id/tvHora_cadEvent"
+                android:id="@+id/tvHora_cadEventRepet"
                 android:gravity="right"
                 android:textColor="#000000" />
 
@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:id="@+id/etHora_cadEvent"
+                android:id="@+id/etHora_cadEventRepet"
                 android:inputType="text"
                 android:background="#ffffff" />
         </LinearLayout>
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/tvTermino_cadEvent"
-                android:id="@+id/tvTermino_cadEvent"
+                android:id="@+id/tvTermino_cadEventRepet"
                 android:gravity="right"
                 android:textColor="#000000" />
 
@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:id="@+id/etTermino_cadEvent"
+                android:id="@+id/etTermino_cadEventRepet"
                 android:inputType="text"
                 android:background="#ffffff" />
         </LinearLayout>
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/tvLocal_cadEvent"
-                android:id="@+id/tvLocal_cadEvent"
+                android:id="@+id/tvLocal_cadEventRepet"
                 android:gravity="right"
                 android:textColor="#000000" />
 
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/etLocal_cadEvent"
+                android:id="@+id/etLocal_cadEventRepet"
                 android:background="#fffefe" />
         </LinearLayout>
 
@@ -121,14 +121,14 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/tvDescricao_cadEvent"
-                android:id="@+id/tvDescricao__cadEvent"
+                android:id="@+id/tvDescricao__cadEventRepet"
                 android:gravity="right"
                 android:textColor="#000000" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/etDescricao_cadEvent"
+                android:id="@+id/etDescricao_cadEventRepet"
                 android:layout_weight="0.60"
                 android:background="#ffffff" />
         </LinearLayout>
@@ -150,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/tvParticipantes_cadEvent"
-                    android:id="@+id/textView2"
+                    android:id="@+id/tvParticipantes_cadEventRepet"
                     android:gravity="right"
                     android:textColor="#000000"
                     android:layout_weight="0.39" />
@@ -166,7 +166,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/etParticipante_cadEvent"
+                    android:id="@+id/etParticipante_cadEventRepet"
                     android:background="#ffffff" />
             </LinearLayout>
 
@@ -190,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/tvTipoEvent_cadEvent"
-                    android:id="@+id/tvTipoEvent_cadEvent"
+                    android:id="@+id/tvTipoEvent_cadEventRepet"
                     android:textColor="#000000" />
             </LinearLayout>
 
@@ -203,7 +203,7 @@
                 <Spinner
                     android:layout_width="152dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner_TipoEvento"
+                    android:id="@+id/spinner_TipoEvento_cadEventRepet"
                     android:gravity="left"
                     android:background="#ffffff" />
             </LinearLayout>
@@ -226,7 +226,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/etRepetir_cadEvent"
-                    android:id="@+id/tvRepetir_cadEvent"
+                    android:id="@+id/tvRepetir_cadEventRepet"
                     android:gravity="right"
                     android:textColor="#000000" />
 
@@ -246,7 +246,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/rbSim_CadEvent"
-                            android:id="@+id/rbSim_cadEvent"
+                            android:id="@+id/rbSim_cadEventRepet"
                             android:layout_weight="0.15"
                             android:textColor="#000000" />
 
@@ -254,12 +254,110 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/rbNao_cadEvent"
-                            android:id="@+id/rbNao_cadEvent" />
+                            android:id="@+id/rbNao_cadEventRepet" />
                     </RadioGroup>
                 </LinearLayout>
             </LinearLayout>
 
+
         </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/tvRepeticao_cadEventRepet"
+                    android:id="@+id/tvRepeticao_cadEventRepet"
+                    android:textColor="#000000" />
+
+                <Spinner
+                    android:layout_width="152dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_Repeticao_cadEventRepet"
+                    android:gravity="left"
+                    android:background="#ffffff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/tvRepetAcada_cadEventRepet"
+                    android:id="@+id/tvACada_cadEventRepet"
+                    android:textColor="#000000" />
+
+                <Spinner
+                    android:layout_width="152dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_RepetCada_cadEventRepet"
+                    android:gravity="left"
+                    android:background="#ffffff" />
+            </LinearLayout>
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/tv_cadInicio_cadEventRepet"
+                android:id="@+id/tvCadInico_cadEvent_Repet"
+                android:gravity="right"
+                android:textColor="#000000" />
+
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:ems="10"
+                android:id="@+id/et_cadInicio_cadEventRepet"
+                android:background="#ffffff"
+                />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/tv_termina_cadEventRepet"
+                    android:id="@+id/tvtermina_cadEvent_Repet"
+                    android:gravity="right"
+                    android:textColor="#000000" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:ems="10"
+                    android:id="@+id/et_termina_cadEventRepet"
+                    android:background="#ffffff"
+                    />
+            </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
@@ -277,14 +375,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/btAdc_cadEvent"
-                    android:id="@+id/btAdc_cadEvent"
-                    android:onClick="inserir" />
+                    android:id="@+id/btAdc_cadEventRepet" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/btVoltar_cadEvent"
-                    android:id="@+id/btVoltar_cadEvent"
+                    android:id="@+id/btVoltar_cadEventRepet"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:onClick="setBtVoltar" />
@@ -302,8 +399,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Medium Text"
-                    android:id="@+id/tvTest"
-                    android:onClick="test" />
+                    android:id="@+id/tvTestRepet" />
             </LinearLayout>
 
         </LinearLayout>

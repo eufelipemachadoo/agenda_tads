@@ -15,6 +15,7 @@ import android.provider.AlarmClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -25,6 +26,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.database.sqlite.*;
 import android.database.*;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -49,6 +51,7 @@ public class cadEvent extends AppCompatActivity {
     RadioButton repetirNao;
     String tipoEvent;
 
+    TextView tvTest;
 
     Button btVoltar;
     Button btAdc_cadEvent;
@@ -86,16 +89,135 @@ public class cadEvent extends AppCompatActivity {
 
         //Fim congufigura Botões
 
+        tvTest = (TextView)findViewById(R.id.tvTest);
         repetirSim = (RadioButton)findViewById(R.id.rbSim_cadEvent);
+        repetirNao = (RadioButton)findViewById(R.id.rbNao_cadEvent);
+
+        repetirNao.setChecked(true);
+
+
+        //Configura SpinnerTipo Evento
+        spinnerTipoEvent = (Spinner)findViewById(R.id.spinner_TipoEvento);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.tipoEvento, android.R.layout.simple_spinner_item);
+        spinnerTipoEvent.setAdapter(adapter);
+        tipoEvent = adapter.toString();
+        //Fim configura SpinnerTIpo Evento
+
         repetirSim.setOnClickListener(new RadioButton.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iRepetir = new Intent(getBaseContext(), repetir.class);
-                startActivity(iRepetir);
+
+                /*if (TextUtils.isEmpty(etData.getText()))
+                {
+                    etData.setError("Campo inválido");
+                    etData.setFocusable(true);
+                    etData.requestFocus();
+                    repetirSim.setChecked(false);
+                    repetirNao.setChecked(true);
+                }
+                 else if (TextUtils.isEmpty(etHora.getText()))
+                {
+                    etHora.setError("Campo inválido");
+                    etHora.setFocusable(true);
+                    etHora.requestFocus();
+                    repetirSim.setChecked(false);
+                    repetirNao.setChecked(true);
+                }
+                 else if (TextUtils.isEmpty(etTermino.getText()))
+                 {
+                     etTermino.setError("Campo inválido");
+                     etTermino.setFocusable(true);
+                     etTermino.requestFocus();
+                     repetirSim.setChecked(false);
+                     repetirNao.setChecked(true);
+                 }
+
+                else if (TextUtils.isEmpty(localEvent.getText()))
+                 {
+                     localEvent.setError("Campo inválido");
+                     localEvent.setFocusable(true);
+                     localEvent.requestFocus();
+                     repetirSim.setChecked(false);
+                     repetirNao.setChecked(true);
+                 }
+
+                else if (TextUtils.isEmpty(descricao.getText()))
+                {
+                    descricao.setError("Campo inválido");
+                    descricao.setFocusable(true);
+                    descricao.requestFocus();
+                    repetirSim.setChecked(false);
+                    repetirNao.setChecked(true);
+
+                }
+
+                else if (TextUtils.isEmpty(participantes.getText()))
+                 {
+                     participantes.setError("Campo inválido");
+                     participantes.setFocusable(true);
+                     participantes.requestFocus();
+                     repetirSim.setChecked(false);
+                     repetirNao.setChecked(true);
+                 }
+
+                else if (spinnerTipoEvent.getSelectedItemPosition() < 1)
+                {
+                    spinnerTipoEvent.setFocusable(true);
+                    spinnerTipoEvent.requestFocus();
+                    Toast.makeText(cadEvent.this, "Escolha uma opção de evento", Toast.LENGTH_SHORT).show();
+                    repetirSim.setChecked(false);
+                    repetirNao.setChecked(true);
+                }*/
+
+
+
+
+
+               // else
+
+                    repetirSim.setChecked(true);
+                    Intent iRepetir = new Intent(getBaseContext(), repetir.class);
+                    String bundleTipoEvento;
+
+                bundleTipoEvento = (String.valueOf(spinnerTipoEvent.getSelectedItemPosition()));
+
+
+
+
+                    if (repetirNao.isChecked())
+                    {
+                        iRepetir.putExtra("data", etData.getText().toString());
+                        iRepetir.putExtra("hora", etHora.getText().toString());
+                        iRepetir.putExtra("termino", etTermino.getText().toString());
+                        iRepetir.putExtra("local", localEvent.getText().toString());
+                        iRepetir.putExtra("descricao", descricao.getText().toString());
+                        iRepetir.putExtra("participantes", participantes.getText().toString());
+                        iRepetir.putExtra("tipoEvento", bundleTipoEvento);
+                        iRepetir.putExtra("repetir", repetirNao.getText().toString() );
+                    }
+
+                    else
+                    {
+                        iRepetir.putExtra("data", etData.getText().toString());
+                        iRepetir.putExtra("hora", etHora.getText().toString());
+                        iRepetir.putExtra("termino", etTermino.getText().toString());
+                        iRepetir.putExtra("local", localEvent.getText().toString());
+                        iRepetir.putExtra("descricao", descricao.getText().toString());
+                        iRepetir.putExtra("participantes", participantes.getText().toString());
+                        iRepetir.putExtra("tipoEvento", bundleTipoEvento);
+                        iRepetir.putExtra("opRepet", repetirSim.getText().toString());
+
+
+                    }
+
+
+
+                    startActivity(iRepetir);
             }
         });
 
         repetirNao = (RadioButton)findViewById(R.id.rbNao_cadEvent);
+
 
         //Configura EditTexts
         etData = (EditText)findViewById(R.id.etData_cadEvent);
@@ -116,12 +238,7 @@ public class cadEvent extends AppCompatActivity {
 
 
 
-        //Configura SpinnerTipo Evento
-        spinnerTipoEvent = (Spinner)findViewById(R.id.spinner_TipoEvento);
-            ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.tipoEvento, android.R.layout.simple_spinner_item);
-        spinnerTipoEvent.setAdapter(adapter);
-        tipoEvent = adapter.toString();
-        //Fim configura SpinnerTIpo Evento
+
 
 
 
@@ -179,7 +296,18 @@ public class cadEvent extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear , int dayOfMonth) {
                         monthOfYear = monthOfYear +1;
-                    etData.setText(dayOfMonth + "/" + monthOfYear + "/" + year );
+
+                        int mData = mesData + 1;
+
+                        if ((dayOfMonth >= diaData) && (monthOfYear >= mData) && (year >= anoData))
+                        {
+                            etData.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
+                        }
+                        else
+                        {
+                            etData.setText("");
+                            Toast.makeText(cadEvent.this, "Data inválida", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }, diaData, mesData, anoData);
                 datePickerDialog.setTitle("Selecione a data");
@@ -329,7 +457,17 @@ public class cadEvent extends AppCompatActivity {
                 evento.setDescricao(descricao.getText().toString());
                 evento.setPariticipantes(participantes.getText().toString());
                 evento.setTipoEvento(String.valueOf(spinnerTipoEvent.getSelectedItemPosition()));
-                evento.setRepetir(String.valueOf(repet));
+
+
+
+                if (repetirSim.isChecked())
+                {
+                    tvTest.setText("Sim");
+                }
+                else if (repetirNao.isChecked())
+                {
+                    tvTest.setText("Não");
+                }
 
                     if (evento.getId() == 0)
                     {RepositorioEventos.inserirEventos(evento);}
@@ -378,6 +516,7 @@ public class cadEvent extends AppCompatActivity {
             }
         }
 
+
     public void salvar() {
         try {
 
@@ -390,7 +529,7 @@ public class cadEvent extends AppCompatActivity {
             evento.setDescricao(descricao.getText().toString());
             evento.setPariticipantes(participantes.getText().toString());
             evento.setTipoEvento(String.valueOf(spinnerTipoEvent.getSelectedItemPosition()));
-            evento.setRepetir(String.valueOf(repet));
+
 
             if (evento.getId() == 0)
             RepositorioEventos.inserirEventos(evento);

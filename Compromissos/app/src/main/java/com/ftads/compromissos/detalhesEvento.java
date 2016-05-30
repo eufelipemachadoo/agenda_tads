@@ -1,6 +1,7 @@
 package com.ftads.compromissos;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.SQLException;
@@ -10,12 +11,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.ftads.compromissos.dataBase.DataBase;
 import com.ftads.compromissos.dominio.entidades.Evento;
 import com.ftads.compromissos.dominio.repositorioEventos;
+
+import java.util.Calendar;
 
 public class detalhesEvento extends AppCompatActivity {
 
@@ -29,6 +34,7 @@ public class detalhesEvento extends AppCompatActivity {
     EditText descricao;
     EditText participantes;
     EditText sitRepet;
+    EditText inicio;
     Spinner spinnerTipoEvent;
     String tipoEvent;
 
@@ -42,25 +48,45 @@ public class detalhesEvento extends AppCompatActivity {
     Button btVoltar;
     Button btAtualizar;
 
+    Spinner spinnerRepeticao;
+    String spnRepeticao;
+
+
+
+    Spinner spinnerRepetCada;
+    String spnRepetCada;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes_evento);
 
-        etData = (EditText)findViewById(R.id.etData_cadEvent);
-        etHora = (EditText)findViewById(R.id.etHora_cadEvent);
-        etTermino = (EditText)findViewById(R.id.etTermino_cadEvent);
-        localEvent = (EditText)findViewById(R.id.etLocal_cadEvent);
-        descricao =(EditText)findViewById(R.id.etDescricao_cadEvent);
-        participantes = (EditText)findViewById(R.id.etParticipante_cadEvent);
+        etData = (EditText)findViewById(R.id.etData_detEvent);
+        etHora = (EditText)findViewById(R.id.etHora_detEvent);
+        etTermino = (EditText)findViewById(R.id.etTermino_detEvent);
+        localEvent = (EditText)findViewById(R.id.etLocal_detEvent);
+        descricao =(EditText)findViewById(R.id.etDescricao_detEvent);
+        participantes = (EditText)findViewById(R.id.etParticipante_detEvent);
+        spinnerTipoEvent = (Spinner)findViewById(R.id.spinner_TipoEvento_detEvent);
+        spinnerRepeticao = (Spinner)findViewById(R.id.spinner_Repeticao_cadEventRepet);
+        spinnerRepetCada = (Spinner)findViewById(R.id.spinner_RepetCada_cadEventRepet);
+        sitRepet = (EditText)findViewById(R.id.etExibeSitRepet_detalhesEvent);
+        inicio = (EditText)findViewById(R.id.et_cadInicio_cadEventRepet);
 
 
         //Configura SpinnerTipo Evento
-        spinnerTipoEvent = (Spinner)findViewById(R.id.spinner_TipoEvento);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.tipoEvento, android.R.layout.simple_spinner_item);
         spinnerTipoEvent.setAdapter(adapter);
         tipoEvent = adapter.toString();
         //Fim configura SpinnerTIpo Evento
+
+        ArrayAdapter adapterRepeticao = ArrayAdapter.createFromResource(this, R.array.repeticao, android.R.layout.simple_spinner_item);
+        spinnerRepeticao.setAdapter(adapterRepeticao);
+        spnRepeticao = adapterRepeticao.toString();
+
+
+        ArrayAdapter adapterRepetCada = ArrayAdapter.createFromResource(this, R.array.tempoRepeticao, android.R.layout.simple_spinner_item);
+        spinnerRepetCada.setAdapter(adapterRepetCada);
+        spnRepetCada = adapterRepetCada.toString();
 
         try {
             dataBase = new DataBase(this);
@@ -98,12 +124,14 @@ public class detalhesEvento extends AppCompatActivity {
         descricao.setEnabled(false);
         participantes.setEnabled(false);
         spinnerTipoEvent.setEnabled(false);
+        sitRepet.setEnabled(false);
 
         btAtualizar= (Button)findViewById(R.id.btAtualizar_detalheEvent);
         btAtualizar.setEnabled(false);
 
 
         btEditar = (Button)findViewById(R.id.btEdit_detalheEvent);
+
         btEditar.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,6 +142,8 @@ public class detalhesEvento extends AppCompatActivity {
                 descricao.setEnabled(true);
                 participantes.setEnabled(true);
                 spinnerTipoEvent.setEnabled(true);
+                sitRepet.setEnabled(true);
+
                 btAtualizar.setEnabled(true);
 
             }
@@ -131,10 +161,42 @@ public class detalhesEvento extends AppCompatActivity {
         });
 
 
+        final Calendar calendar = Calendar.getInstance();
+        final int diaData = calendar.get(calendar.DAY_OF_MONTH);
+        final int mesData = calendar.get(calendar.MONTH);
+        final int anoData = calendar.get(calendar.YEAR);
 
+        etData.setOnClickListener(new EditText.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(detalhesEvento.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear , int dayOfMonth) {
+                        monthOfYear = monthOfYear +1;
+
+                        int mData = mesData + 1;
+
+                        if ((dayOfMonth >= diaData) && (monthOfYear >= mData) && (year >= anoData))
+                        {
+                            etData.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
+                            participantes.setText(diaData + "/" + mData + "/" + anoData);
+                        }
+                        else
+                        {
+                            etData.setText("");
+                            Toast.makeText(detalhesEvento.this, "Data inválida", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, diaData, mesData, anoData);
+                datePickerDialog.setTitle("Selecione a data");
+                datePickerDialog.show();
+            }
+        });
 
 
     }
+
+
 
     private void preencheDados()
     {
@@ -145,8 +207,19 @@ public class detalhesEvento extends AppCompatActivity {
         descricao.setText(evento.getDescricao());
         participantes.setText(evento.getPariticipantes());
         spinnerTipoEvent.setSelection(Integer.parseInt(evento.getTipoEvento()));
+//        spinnerRepeticao.setSelection(Integer.parseInt(evento.getTipoRepeticao()));
+
+
+
+
+
 
     }
+
+
+
+
+
 
 
     public void salvar() {
@@ -161,7 +234,10 @@ public class detalhesEvento extends AppCompatActivity {
             evento.setDescricao(descricao.getText().toString());
             evento.setPariticipantes(participantes.getText().toString());
             evento.setTipoEvento(String.valueOf(spinnerTipoEvent.getSelectedItemPosition()));
-            //evento.setRepetir(String.valueOf(repet));
+
+
+
+
 
             if (evento.getId() == 0)
                 RepositorioEventos.inserirEventos(evento);
@@ -186,7 +262,7 @@ public class detalhesEvento extends AppCompatActivity {
     public void excluir_detalheEvent(View view)
     {
         try {
-            RepositorioEventos.excluir(evento.getId());
+
 
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             // Seta o Titulo do Dialog
@@ -197,6 +273,7 @@ public class detalhesEvento extends AppCompatActivity {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // SIM
+                            RepositorioEventos.excluir(evento.getId());
                             Intent iHome = new Intent(getBaseContext(), Home.class);
                             startActivity(iHome);
 

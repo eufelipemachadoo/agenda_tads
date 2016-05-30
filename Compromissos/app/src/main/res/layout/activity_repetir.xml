@@ -23,18 +23,20 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/tvRepetircao_repetir"
                 android:id="@+id/tvRepeticao_repetir"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:gravity="center_horizontal" />
 
             <Spinner
                 android:layout_width="wrap_content"
-                android:layout_height="45dp"
+                android:layout_height="35dp"
                 android:id="@+id/spinnerRepeticao"
                 android:background="#ffffff" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -44,18 +46,219 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/tvRepetCada_repetir"
                 android:id="@+id/tvRepetCada_repetir"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:gravity="center_horizontal" />
 
             <Spinner
                 android:layout_width="wrap_content"
-                android:layout_height="45dp"
+                android:layout_height="35dp"
                 android:id="@+id/spnTempoRepeticao"
                 android:background="#ffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/tvTempoAcada_repetir" />
         </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/tvInicioEm_repetir"
+                    android:id="@+id/tvInicioEm_repetir"
+                    android:textColor="#000000"
+                    android:gravity="center_horizontal" />
+
+                <EditText
+                    android:layout_width="85dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:id="@+id/etInicioEm_repetir"
+                    android:background="#ffffff"
+                    android:textColor="#000000" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="82dp">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:text="@string/tvTermina_repetir"
+                            android:id="@+id/tvTermina_repetir"
+                            android:textColor="#000000"
+                            android:gravity="center_horizontal" />
+                    </LinearLayout>
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rgTermina"
+                        >
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rbTepeteSempre_repetir"
+                            android:id="@+id/rbRepeteSempre_repetir" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rbTepeteApos_repetir"
+                            android:id="@+id/rbRepeteApos_repetir"
+                            android:layout_weight="0.25" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rbTepeteEm_repetir"
+                            android:id="@+id/rbRepeteEm_repetir" />
+
+                    </RadioGroup>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="94dp"
+                        android:weightSum="1"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.25"
+                            android:gravity="bottom">
+
+                            <EditText
+                                android:layout_width="85dp"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:id="@+id/etOcorrencia_repetir"
+                                android:background="#ffffff"
+                                android:gravity="center_horizontal" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="@string/tvRepeteApos_repetir"
+                                android:id="@+id/tvRepeteApos_repetir"
+                                android:textColor="#000000"
+                                android:textSize="@dimen/abc_action_bar_overflow_padding_end_material" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:gravity="bottom">
+
+                            <EditText
+                                android:layout_width="85dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/etTerminaEm_repetir"
+                                android:background="#ffffff"
+                                android:gravity="center_horizontal"
+                                android:foregroundGravity="center_horizontal" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/tvResultResumo_repetir"
+                android:id="@+id/tvResumo"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/tvResumo_repetir"
+                android:id="@+id/tvResumo_repetir"
+                android:textColor="#000000"
+                android:layout_weight="0.04" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btConcluido_repetir"
+                android:id="@+id/btConcluido_repetir"
+                android:layout_gravity="center_vertical"
+                android:onClick="validar" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btCancelar_repetir"
+                android:id="@+id/btCancelar_repetir"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
     </LinearLayout>
+
 </RelativeLayout>
