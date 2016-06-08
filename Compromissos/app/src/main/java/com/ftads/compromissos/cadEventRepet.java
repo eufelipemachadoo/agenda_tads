@@ -1,6 +1,9 @@
 package com.ftads.compromissos;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -8,14 +11,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.ftads.compromissos.dataBase.DataBase;
 import com.ftads.compromissos.dominio.entidades.Evento;
 import com.ftads.compromissos.dominio.repositorioEventos;
+
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -47,16 +55,23 @@ public class cadEventRepet extends AppCompatActivity {
 
 
     EditText cadTermina;
+    String strRepet;
+    String strOcorrencias;
+    String strEm;
 
 
 
     Button btAdc_cadEventRepet;
+    Button btVoltar_cadEventRepet;
+
     String terminaSempre;
     String strRepetir;
 
     private DataBase dataBase;
     private SQLiteDatabase conn;
     private repositorioEventos RepositorioEventos;
+
+    String tipoTermino_cadEvenRepet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +105,7 @@ public class cadEventRepet extends AppCompatActivity {
 
 
         btAdc_cadEventRepet = (Button)findViewById(R.id.btAdc_cadEventRepet);
-
+        btVoltar_cadEventRepet = (Button)findViewById(R.id.btVoltar_cadEventRepet);
 
 
 
@@ -118,6 +133,9 @@ public class cadEventRepet extends AppCompatActivity {
         repetSim = (RadioButton)findViewById(R.id.rbSim_cadEventRepet);
         repetNao = (RadioButton)findViewById(R.id.rbNao_cadEventRepet);
 
+
+
+
         Bundle valores = getIntent().getExtras();
         if ((valores != null) && (valores.containsKey("devolveData")))
         {
@@ -136,6 +154,9 @@ public class cadEventRepet extends AppCompatActivity {
             String ocorrencias = valores.getString("ocorrencias");
             String terminaEm = valores.getString("terminaEm");
 
+            strRepet = tRepet;
+
+
             cadData.setText(data);
             cadHora.setText(hora);
             cadTermino.setText(termino);
@@ -147,8 +168,13 @@ public class cadEventRepet extends AppCompatActivity {
             spinnerRepetCada.setSelection(Integer.parseInt(repetAcada));
             cadInicio.setText(inicio);
 
+            cadTermina.setText(repeticao);
 
-             if (tRepet.equals("Sempre"))
+
+
+
+
+            if (tRepet.equals("Sempre"))
             {
                 cadTermina.setText(" " + tRepet);
                 terminaSempre = tRepet;
@@ -157,10 +183,13 @@ public class cadEventRepet extends AppCompatActivity {
             else if (tRepet.equals("Após"))
             {
                 cadTermina.setText(" " + tRepet + " " + ocorrencias + " ocorrências");
+                strOcorrencias = ocorrencias;
             }
             else if (tRepet.equals("Em"))
             {
                 cadTermina.setText(" " + tRepet + " " + terminaEm);
+                terminaSempre = tRepet;
+                strEm = terminaEm;
             }
 
 
@@ -169,10 +198,7 @@ public class cadEventRepet extends AppCompatActivity {
                  repetSim.setChecked(true);
                  strRepetir = String.valueOf(repetSim.getText().toString());
              }
-            else
-             {
-                strRepetir = String.valueOf(repetNao.getText().toString());
-             }
+
 
          tvTestRepet.setOnClickListener(new TextView.OnClickListener() {
              @Override
@@ -197,6 +223,101 @@ public class cadEventRepet extends AppCompatActivity {
         else
             evento = new Evento();
 
+        cadData.setEnabled(false);
+        cadHora.setEnabled(false);
+        cadTermino.setEnabled(false);
+        cadLocal.setEnabled(false);
+        cadDescricao.setEnabled(false);
+        cadParticipantes.setEnabled(false);
+        spinnerTipoEvent.setEnabled(false);
+        spinnerRepeticao.setEnabled(false);
+        spinnerRepetCada.setEnabled(false);
+        cadInicio.setEnabled(false);
+        cadTermina.setEnabled(false);
+
+
+        final Calendar calendar = Calendar.getInstance();
+        final int diaData = calendar.get(calendar.DAY_OF_MONTH);
+        final int mesData = calendar.get(calendar.MONTH);
+        final int anoData = calendar.get(calendar.YEAR);
+
+
+        final int hora = calendar.get(calendar.HOUR_OF_DAY);
+        final int minuto = calendar.get(Calendar.MINUTE);
+
+        final int horaTermino = calendar.get(calendar.HOUR_OF_DAY);
+        final int minutoTermino = calendar.get(Calendar.MINUTE);
+
+
+        cadData.setOnClickListener(new EditText.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(cadEventRepet.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        monthOfYear = monthOfYear + 1;
+
+                        int mData = mesData + 1;
+
+                        if ((year == anoData && monthOfYear == mData && dayOfMonth >= diaData) || (year > anoData)) {
+                            cadData.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
+                        } else {
+                            cadData.setText("");
+                            Toast.makeText(cadEventRepet.this, "Data inválida", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, diaData, mesData, anoData);
+                datePickerDialog.setTitle("Selecione a data");
+                datePickerDialog.show();
+            }
+        });
+
+
+        cadHora.setOnClickListener(new EditText.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(cadEventRepet.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        cadHora.setText(hourOfDay+":"+minute);
+                    }
+                }, hora, minuto, true);
+                timePickerDialog.setTitle("Selecione a hora do início");
+                timePickerDialog.show();
+            }
+        });
+
+
+
+        cadTermino.setOnClickListener(new EditText.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog2 = new TimePickerDialog(cadEventRepet.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        cadTermino.setText(hourOfDay+":"+minute);
+
+                    }
+                }, horaTermino, minutoTermino, true);
+                timePickerDialog2.setTitle("Selecione a hora de encerramento");
+                timePickerDialog2.show();
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -213,7 +334,7 @@ public class cadEventRepet extends AppCompatActivity {
                 evento.setDescricao(cadDescricao.getText().toString());
                 evento.setPariticipantes(cadParticipantes.getText().toString());
                 evento.setTipoEvento(String.valueOf(spinnerTipoEvent.getSelectedItemPosition()));
-                evento.setTipoRepeticao(String.valueOf(spinnerRepeticao.getSelectedItemPosition()));
+
 
 
 
@@ -223,8 +344,67 @@ public class cadEventRepet extends AppCompatActivity {
                 else
                 {RepositorioEventos.alterarEventos(evento);}
 
+                Intent iHome = new Intent(getBaseContext(), Home.class);
+                startActivity(iHome);
 
 
+
+            }
+        });
+
+
+        btVoltar_cadEventRepet.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cadData.setEnabled(true);
+                cadHora.setEnabled(true);
+                cadTermino.setEnabled(true);
+                cadLocal.setEnabled(true);
+                cadDescricao.setEnabled(true);
+                cadParticipantes.setEnabled(true);
+                spinnerTipoEvent.setEnabled(true);
+                spinnerRepeticao.setEnabled(true);
+                spinnerRepetCada.setEnabled(true);
+
+
+
+                /*Intent iCorrigeCadEvento = new Intent(getBaseContext(), corrige_cadEvent.class);
+                Intent iCorrigeRepeticao = new Intent(getBaseContext(), corrigeRepetir.class);
+
+
+
+                String bundleTipoEvento;
+                bundleTipoEvento = (String.valueOf(spinnerTipoEvent.getSelectedItemPosition()));
+
+
+                String bundleRepeticao;
+                bundleRepeticao = (String.valueOf(spinnerRepeticao.getSelectedItemPosition()));
+
+                String bundleRepetCada;
+                bundleRepetCada = (String.valueOf(spinnerRepetCada.getSelectedItemPosition()));
+
+                String bundleInicio;
+                bundleInicio = (cadInicio.getText().toString());
+
+
+
+
+                iCorrigeCadEvento.putExtra("data", cadData.getText().toString());
+                iCorrigeCadEvento.putExtra("hora", cadHora.getText().toString());
+                iCorrigeCadEvento.putExtra("termina", cadTermino.getText().toString());
+                iCorrigeCadEvento.putExtra("local", cadLocal.getText().toString());
+                iCorrigeCadEvento.putExtra("descricao", cadDescricao.getText().toString());
+                iCorrigeCadEvento.putExtra("participantes", cadParticipantes.getText().toString());
+                iCorrigeCadEvento.putExtra("tipoEvento", bundleTipoEvento);
+
+                iCorrigeCadEvento.putExtra("repeticao", bundleRepeticao.toString());
+                iCorrigeCadEvento.putExtra("repetCada", bundleRepetCada.toString());
+                iCorrigeCadEvento.putExtra("inicio", bundleInicio);
+                iCorrigeCadEvento.putExtra("termino", strRepet);
+                iCorrigeCadEvento.putExtra("ocorrencias", strOcorrencias);
+                iCorrigeCadEvento.putExtra("terminaEm", strEm);
+
+                startActivity(iCorrigeCadEvento);*/
             }
         });
     }

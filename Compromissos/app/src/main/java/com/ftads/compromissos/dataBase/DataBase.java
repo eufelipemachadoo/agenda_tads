@@ -17,7 +17,7 @@ public class DataBase extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(ScriptSQL.getCreateEventos());
-
+        db.execSQL(tabelaTipoEvento.getCreateTipoEventos());
     }
 
     @Override

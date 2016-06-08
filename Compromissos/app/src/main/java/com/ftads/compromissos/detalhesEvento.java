@@ -69,7 +69,7 @@ public class detalhesEvento extends AppCompatActivity {
         spinnerTipoEvent = (Spinner)findViewById(R.id.spinner_TipoEvento_detEvent);
         spinnerRepeticao = (Spinner)findViewById(R.id.spinner_Repeticao_cadEventRepet);
         spinnerRepetCada = (Spinner)findViewById(R.id.spinner_RepetCada_cadEventRepet);
-        sitRepet = (EditText)findViewById(R.id.etExibeSitRepet_detalhesEvent);
+        //sitRepet = (EditText)findViewById(R.id.etExibeSitRepet_detalhesEvent);
         inicio = (EditText)findViewById(R.id.et_cadInicio_cadEventRepet);
 
 
@@ -79,14 +79,7 @@ public class detalhesEvento extends AppCompatActivity {
         tipoEvent = adapter.toString();
         //Fim configura SpinnerTIpo Evento
 
-        ArrayAdapter adapterRepeticao = ArrayAdapter.createFromResource(this, R.array.repeticao, android.R.layout.simple_spinner_item);
-        spinnerRepeticao.setAdapter(adapterRepeticao);
-        spnRepeticao = adapterRepeticao.toString();
 
-
-        ArrayAdapter adapterRepetCada = ArrayAdapter.createFromResource(this, R.array.tempoRepeticao, android.R.layout.simple_spinner_item);
-        spinnerRepetCada.setAdapter(adapterRepetCada);
-        spnRepetCada = adapterRepetCada.toString();
 
         try {
             dataBase = new DataBase(this);
@@ -124,7 +117,7 @@ public class detalhesEvento extends AppCompatActivity {
         descricao.setEnabled(false);
         participantes.setEnabled(false);
         spinnerTipoEvent.setEnabled(false);
-        sitRepet.setEnabled(false);
+
 
         btAtualizar= (Button)findViewById(R.id.btAtualizar_detalheEvent);
         btAtualizar.setEnabled(false);
@@ -142,7 +135,7 @@ public class detalhesEvento extends AppCompatActivity {
                 descricao.setEnabled(true);
                 participantes.setEnabled(true);
                 spinnerTipoEvent.setEnabled(true);
-                sitRepet.setEnabled(true);
+//                sitRepet.setEnabled(true);
 
                 btAtualizar.setEnabled(true);
 
@@ -207,13 +200,6 @@ public class detalhesEvento extends AppCompatActivity {
         descricao.setText(evento.getDescricao());
         participantes.setText(evento.getPariticipantes());
         spinnerTipoEvent.setSelection(Integer.parseInt(evento.getTipoEvento()));
-//        spinnerRepeticao.setSelection(Integer.parseInt(evento.getTipoRepeticao()));
-
-
-
-
-
-
     }
 
 

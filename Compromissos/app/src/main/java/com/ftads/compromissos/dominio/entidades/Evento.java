@@ -15,19 +15,14 @@ public class Evento implements Serializable {
     private String descricao;
     private String pariticipantes;
     private String tipoEvento;
-    private String repetir;
-    private String tipoRepeticao;
-    private String repetCada;;
-    private String inicio;
-    private String sempre;
-    private String ocorrencias;
+
+
+    private long idTEv;
+    private String repeticao;
+    private String repeteCada;
     private String terminaEm;
 
 
-    public Evento()
-    {
-
-    }
 
 
 
@@ -128,54 +123,31 @@ public class Evento implements Serializable {
     //FIM TIPO EVENTO
 
 
-    //REPETIR
-    public String getRepetir() {
-        return repetir;
+    //FIM METODOS GETS SETS
+
+
+    public long getIdTEv() {
+        return idTEv;
     }
 
-    public void setRepetir(String repetir) {
-        this.repetir = repetir;
-    }
-    //FIM REPETIR
-
-    public String getTipoRepeticao() {
-        return tipoRepeticao;
+    public void setIdTEv(long idTEv) {
+        this.idTEv = idTEv;
     }
 
-    public void setTipoRepeticao(String tipoRepeticao) {
-        this.tipoRepeticao = tipoRepeticao;
+    public String getRepeticao() {
+        return repeticao;
     }
 
-    public String getRepetCada() {
-        return repetCada;
+    public void setRepeticao(String repeticao) {
+        this.repeticao = repeticao;
     }
 
-    public void setRepetCada(String repetCada) {
-        this.repetCada = repetCada;
+    public String getRepeteCada() {
+        return repeteCada;
     }
 
-    public String getInicio() {
-        return inicio;
-    }
-
-    public void setInicio(String inicio) {
-        this.inicio = inicio;
-    }
-
-    public String getSempre() {
-        return sempre;
-    }
-
-    public void setSempre(String sempre) {
-        this.sempre = sempre;
-    }
-
-    public String getOcorrencias() {
-        return ocorrencias;
-    }
-
-    public void setOcorrencias(String ocorrencias) {
-        this.ocorrencias = ocorrencias;
+    public void setRepeteCada(String repeteCada) {
+        this.repeteCada = repeteCada;
     }
 
     public String getTerminaEm() {
@@ -185,10 +157,6 @@ public class Evento implements Serializable {
     public void setTerminaEm(String terminaEm) {
         this.terminaEm = terminaEm;
     }
-
-
-    //FIM METODOS GETS SETS
-
 
 
 

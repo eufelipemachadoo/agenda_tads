@@ -224,136 +224,11 @@
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="78dp">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="1"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:layout_width="125dp"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/etRepetir_cadEvent"
-                    android:id="@+id/tvRepetir_detEvent"
-                    android:textColor="#000000"
-                    android:gravity="center_horizontal" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/etExibeSitRepet_detalhesEvent"
-                    android:background="#ffffff"
-                    android:layout_weight="0.28"
-                    android:gravity="center_horizontal" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/tvRepeticao_cadEventRepet"
-                android:id="@+id/tvRepeticao_cadEventRepet"
-                android:textColor="#000000" />
-
-            <Spinner
-                android:layout_width="152dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner_Repeticao_cadEventRepet"
-                android:gravity="left"
-                android:background="#ffffff" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/tvRepetAcada_cadEventRepet"
-                android:id="@+id/tvACada_cadEventRepet"
-                android:textColor="#000000" />
-
-            <Spinner
-                android:layout_width="152dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinner_RepetCada_cadEventRepet"
-                android:gravity="left"
-                android:background="#ffffff" />
-
-        </LinearLayout>
 
 
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="125dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/tv_cadInicio_cadEventRepet"
-                android:id="@+id/tvCadInico_cadEvent_Repet"
-                android:gravity="right"
-                android:textColor="#000000" />
 
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:ems="10"
-                android:id="@+id/et_cadInicio_cadEventRepet"
-                android:background="#ffffff"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="125dp"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/tv_termina_cadEventRepet"
-                android:id="@+id/tvtermina_cadEvent_Repet"
-                android:gravity="right"
-                android:textColor="#000000" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:ems="10"
-                android:id="@+id/et_termina_cadEventRepet"
-                android:background="#ffffff"
-                />
-        </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
@@ -391,7 +266,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/btVoltar_cadEvent"
+                    android:text="Voltar"
                     android:id="@+id/btVoltar_detalheEvent"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />

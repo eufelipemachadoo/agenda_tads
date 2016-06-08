@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Compromissos</string>
     <string name="btCadEvent_home">Novo Evento</string>
-    <string name="btVoltar_cadEvent">Voltar</string>
+    <string name="btVoltar_cadEvent">Editar</string>
     <string name="tv_cadEvent">Data:</string>
     <string name="tvHora_cadEvent">Hora:</string>
     <string name="tvTermino_cadEvent">Termino:</string>
@@ -40,6 +40,7 @@
     <string name="tv_termina_cadEventRepet">Termina: </string>
     <string name="tvRepeticao_cadEventRepet">Repetição:</string>
     <string name="tvRepetAcada_cadEventRepet">A cada:</string>
+    <string name="btVoltar_cadEvent2">Voltar</string>
     />
 
     <string-array name="tipoEvento">

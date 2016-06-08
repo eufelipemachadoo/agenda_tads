@@ -87,12 +87,10 @@ public class repositorioEventos {
                 evento.setDescricao(cursor.getString(5));
                 evento.setPariticipantes(cursor.getString(6));
                 evento.setTipoEvento(cursor.getString(7));
-                evento.setRepetir(cursor.getString(8));
-//                evento.setTipoRepeticao(cursor.getString(9));
 
 
 
-//
+
                 adpEventos.add(evento);
             }
             while (cursor.moveToNext());

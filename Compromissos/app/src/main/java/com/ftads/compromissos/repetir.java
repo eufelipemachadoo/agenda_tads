@@ -352,14 +352,15 @@ public class repetir extends AppCompatActivity {
                     tempoRepeticao.getSelectedItem().toString() + " " + tRepet) ;
 
             try {
-               /* evento = new Evento();
+                /*evento = new Evento();
                 evento.setData(devolveData);
                 evento.setHora(devolveHora);
                 evento.setTermino(devolveTermino);
                 evento.setLocal(devolveLocal);
                 evento.setDescricao(devolveDescricao);
                 evento.setPariticipantes(devolveParticipantes);
-                evento.setTipoRepeticao(String.valueOf(Repeticao.getSelectedItemPosition()));
+                evento.setTipoEvento(String.valueOf(devolveTipoEvent));
+
 
 
 
@@ -375,7 +376,7 @@ public class repetir extends AppCompatActivity {
                 alertDialogBuilder.setTitle("Atenção");
 
                 // seta a mensagem
-                alertDialogBuilder.setMessage("Todos os dados estão corretos").setCancelable(false).setPositiveButton("Sim",
+                alertDialogBuilder.setMessage("Todos os dados estão corretos?").setCancelable(false).setPositiveButton("Sim",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // SIM
@@ -411,13 +412,13 @@ public class repetir extends AppCompatActivity {
                                     iCadEventRepet.putExtra("devolveLocal", devolveLocal.toString() );
                                     iCadEventRepet.putExtra("devolveDescricao", devolveDescricao.toString() );
                                     iCadEventRepet.putExtra("devolveParticipantes", devolveParticipantes.toString() );
-                                    iCadEventRepet.putExtra("devolveTipoEvento", devolveTipoEvent.toString() );
-                                    iCadEventRepet.putExtra("tRepeticao", tRepeticao.toString() );
-                                    iCadEventRepet.putExtra("repetCada", repetCada.toString() );
+                                    iCadEventRepet.putExtra("devolveTipoEvento", devolveTipoEvent);
+                                    iCadEventRepet.putExtra("tRepeticao", bundleRepeticao.toString() );
+                                    iCadEventRepet.putExtra("repetCada", bundleRepetCada.toString() );
                                     iCadEventRepet.putExtra("inicio", inicio.toString() );
                                     iCadEventRepet.putExtra("tRepet", tRepet.toString() );
+                                    iCadEventRepet.putExtra("opRepet", devolveOpRepetir.toString());
                                     iCadEventRepet.putExtra("ocorrencias", ocorrencias.getText().toString());
-                                    iCadEventRepet.putExtra("numOcorrencias", numOcorrencias.toString() );
                                 }
 
                                 else if (rbEm.isChecked())
@@ -428,11 +429,12 @@ public class repetir extends AppCompatActivity {
                                     iCadEventRepet.putExtra("devolveLocal", devolveLocal.toString() );
                                     iCadEventRepet.putExtra("devolveDescricao", devolveDescricao.toString() );
                                     iCadEventRepet.putExtra("devolveParticipantes", devolveParticipantes.toString() );
-                                    iCadEventRepet.putExtra("devolveTipoEvento", devolveTipoEvent.toString() );
-                                    iCadEventRepet.putExtra("tRepeticao", tRepeticao.toString() );
-                                    iCadEventRepet.putExtra("repetCada", repetCada.toString() );
+                                    iCadEventRepet.putExtra("devolveTipoEvento", devolveTipoEvent);
+                                    iCadEventRepet.putExtra("tRepeticao", bundleRepeticao.toString() );
+                                    iCadEventRepet.putExtra("repetCada", bundleRepetCada.toString() );
                                     iCadEventRepet.putExtra("inicio", inicio.toString() );
                                     iCadEventRepet.putExtra("tRepet", tRepet.toString() );
+                                    iCadEventRepet.putExtra("opRepet", devolveOpRepetir.toString());
                                     iCadEventRepet.putExtra("terminaEm", terminaEm.getText().toString());
                                     iCadEventRepet.putExtra("strTerminaEm", strTerminaEm.toString() );
                                 }

@@ -107,85 +107,58 @@ public class cadEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                /*if (TextUtils.isEmpty(etData.getText()))
-                {
-                    etData.setError("Campo inválido");
+                if (TextUtils.isEmpty(etData.getText())) {
+                    Toast.makeText(cadEvent.this, "Data inválida", Toast.LENGTH_LONG).show();
                     etData.setFocusable(true);
                     etData.requestFocus();
                     repetirSim.setChecked(false);
                     repetirNao.setChecked(true);
-                }
-                 else if (TextUtils.isEmpty(etHora.getText()))
-                {
-                    etHora.setError("Campo inválido");
+                } else if (TextUtils.isEmpty(etHora.getText())) {
+                    Toast.makeText(cadEvent.this, "Hora inválida", Toast.LENGTH_LONG).show();
                     etHora.setFocusable(true);
                     etHora.requestFocus();
                     repetirSim.setChecked(false);
                     repetirNao.setChecked(true);
-                }
-                 else if (TextUtils.isEmpty(etTermino.getText()))
-                 {
-                     etTermino.setError("Campo inválido");
-                     etTermino.setFocusable(true);
-                     etTermino.requestFocus();
-                     repetirSim.setChecked(false);
-                     repetirNao.setChecked(true);
-                 }
-
-                else if (TextUtils.isEmpty(localEvent.getText()))
-                 {
-                     localEvent.setError("Campo inválido");
-                     localEvent.setFocusable(true);
-                     localEvent.requestFocus();
-                     repetirSim.setChecked(false);
-                     repetirNao.setChecked(true);
-                 }
-
-                else if (TextUtils.isEmpty(descricao.getText()))
-                {
+                } else if (TextUtils.isEmpty(etTermino.getText())) {
+                    Toast.makeText(cadEvent.this, "Termino inválido", Toast.LENGTH_LONG).show();
+                    etTermino.setFocusable(true);
+                    etTermino.requestFocus();
+                    repetirSim.setChecked(false);
+                    repetirNao.setChecked(true);
+                } else if (TextUtils.isEmpty(localEvent.getText())) {
+                    localEvent.setError("Campo inválido");
+                    localEvent.setFocusable(true);
+                    localEvent.requestFocus();
+                    repetirSim.setChecked(false);
+                    repetirNao.setChecked(true);
+                } else if (TextUtils.isEmpty(descricao.getText())) {
                     descricao.setError("Campo inválido");
                     descricao.setFocusable(true);
                     descricao.requestFocus();
                     repetirSim.setChecked(false);
                     repetirNao.setChecked(true);
 
-                }
-
-                else if (TextUtils.isEmpty(participantes.getText()))
-                 {
-                     participantes.setError("Campo inválido");
-                     participantes.setFocusable(true);
-                     participantes.requestFocus();
-                     repetirSim.setChecked(false);
-                     repetirNao.setChecked(true);
-                 }
-
-                else if (spinnerTipoEvent.getSelectedItemPosition() < 1)
-                {
+                } else if (TextUtils.isEmpty(participantes.getText())) {
+                    participantes.setError("Campo inválido");
+                    participantes.setFocusable(true);
+                    participantes.requestFocus();
+                    repetirSim.setChecked(false);
+                    repetirNao.setChecked(true);
+                } else if (spinnerTipoEvent.getSelectedItemPosition() < 1) {
                     spinnerTipoEvent.setFocusable(true);
                     spinnerTipoEvent.requestFocus();
                     Toast.makeText(cadEvent.this, "Escolha uma opção de evento", Toast.LENGTH_SHORT).show();
                     repetirSim.setChecked(false);
                     repetirNao.setChecked(true);
-                }*/
-
-
-
-
-
-               // else
-
+                } else {
                     repetirSim.setChecked(true);
                     Intent iRepetir = new Intent(getBaseContext(), repetir.class);
                     String bundleTipoEvento;
 
-                bundleTipoEvento = (String.valueOf(spinnerTipoEvent.getSelectedItemPosition()));
+                    bundleTipoEvento = (String.valueOf(spinnerTipoEvent.getSelectedItemPosition()));
 
 
-
-
-                    if (repetirNao.isChecked())
-                    {
+                    if (repetirNao.isChecked()) {
                         iRepetir.putExtra("data", etData.getText().toString());
                         iRepetir.putExtra("hora", etHora.getText().toString());
                         iRepetir.putExtra("termino", etTermino.getText().toString());
@@ -193,11 +166,8 @@ public class cadEvent extends AppCompatActivity {
                         iRepetir.putExtra("descricao", descricao.getText().toString());
                         iRepetir.putExtra("participantes", participantes.getText().toString());
                         iRepetir.putExtra("tipoEvento", bundleTipoEvento);
-                        iRepetir.putExtra("repetir", repetirNao.getText().toString() );
-                    }
-
-                    else
-                    {
+                        iRepetir.putExtra("repetir", repetirNao.getText().toString());
+                    } else {
                         iRepetir.putExtra("data", etData.getText().toString());
                         iRepetir.putExtra("hora", etHora.getText().toString());
                         iRepetir.putExtra("termino", etTermino.getText().toString());
@@ -211,8 +181,8 @@ public class cadEvent extends AppCompatActivity {
                     }
 
 
-
                     startActivity(iRepetir);
+                }
             }
         });
 
@@ -299,7 +269,7 @@ public class cadEvent extends AppCompatActivity {
 
                         int mData = mesData + 1;
 
-                        if ((dayOfMonth >= diaData) && (monthOfYear >= mData) && (year >= anoData))
+                        if ((year == anoData && monthOfYear == mData && dayOfMonth >= diaData) ||(year > anoData))
                         {
                             etData.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
                         }
@@ -359,10 +329,6 @@ public class cadEvent extends AppCompatActivity {
     }
 
 
-
-
-
-
     //Captura o Tipo de Evento
     public void tipoEvent(View view)
     {
@@ -376,6 +342,9 @@ public class cadEvent extends AppCompatActivity {
     }
     //Fim Captura Tipo Evento
 
+
+
+    /*
     //Classe para Criar Mascaras
     public abstract static class Mask
     {
@@ -386,7 +355,7 @@ public class cadEvent extends AppCompatActivity {
                      .replaceAll("[)]", "").replaceAll("[:]", "");
         }
 
-       /* public static TextWatcher insert(final String mask, final EditText editText)
+        public static TextWatcher insert(final String mask, final EditText editText)
         {
             return new TextWatcher() {
 
@@ -431,9 +400,10 @@ public class cadEvent extends AppCompatActivity {
 
                 }
             };
-        }*/
+        }
     }
     //Fim de Criar Mascaras
+    */
 
     private void preencheDados()
     {
@@ -448,6 +418,8 @@ public class cadEvent extends AppCompatActivity {
     }
 
         public void inserir(View view) {
+
+
             try {
                 evento = new Evento();
                 evento.setData(etData.getText().toString());
@@ -458,16 +430,6 @@ public class cadEvent extends AppCompatActivity {
                 evento.setPariticipantes(participantes.getText().toString());
                 evento.setTipoEvento(String.valueOf(spinnerTipoEvent.getSelectedItemPosition()));
 
-
-
-                if (repetirSim.isChecked())
-                {
-                    tvTest.setText("Sim");
-                }
-                else if (repetirNao.isChecked())
-                {
-                    tvTest.setText("Não");
-                }
 
                     if (evento.getId() == 0)
                     {RepositorioEventos.inserirEventos(evento);}
